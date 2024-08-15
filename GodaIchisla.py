@@ -1,37 +1,36 @@
-# -*- coding: cp1251 -*-
 import datetime
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-#Без дататайма, pillow и нумпая работать не будет
+#Р‘РµР· РґР°С‚Р°С‚Р°Р№РјР°, pillow Рё РЅСѓРјРїР°СЏ СЂР°Р±РѕС‚Р°С‚СЊ РЅРµ Р±СѓРґРµС‚
 #Esli kirilica ne raboet cmenite codirovku v IDE na 1251
 
  #1
-print('Пожалуйста, введите вашу дату рождения, пишите цифрами!')
-day = int(input('Введите день: '))
-month = int(input('Месяц: '))
-year = int(input('Год: '))
+print('Please enter when you were born, enter numbper only!')
+day = int(input('Enter day: '))
+month = int(input('Month: '))
+year = int(input('Yeah: '))
 TODAY = datetime.date.today()
 
 
 #2
-week_days=["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресень"]
+week_days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 week_num=datetime.date(year,month,day).weekday()
 print(week_days[week_num])
 
 #3
 if year % 4 != 0:
-    print('Год не Високосный.')
+    print('Leap Year.')
 
 elif year % 100 == 0:
     if year % 400 == 0:
-        print('Год високосный.')
+        print('Leap year.')
     else:
-        print('Год не високосный.')
+        print('Year is not leap.')
 else:
-    print('Год високосный.')
+    print('Leap Year.')
 
  #4
-print(f'Вам столько лет - {TODAY.year - year - ((TODAY.month, TODAY.day) < (month, day))} !')
+print(f'Your age - {TODAY.year - year - ((TODAY.month, TODAY.day) < (month, day))} !')
 
 #5
 day = str(day) 
@@ -47,5 +46,6 @@ pixels = np.array(img, dtype=np.uint8)
 chars = np.array([' ','*'], dtype="U1")[pixels]
 strings = chars.view('U' + str(chars.shape[1])).flatten()
 print( "\n".join(strings))
+
 
 
